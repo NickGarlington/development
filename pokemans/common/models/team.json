@@ -1,0 +1,30 @@
+{
+  "name": "team",
+  "plural": "teams",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "limit": {
+      "type": "number",
+      "required": true,
+      "default": "3"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "pokemons": {
+      "type": "hasMany",
+      "model": "pokemon",
+      "foreignKey": "team_id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

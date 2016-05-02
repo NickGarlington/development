@@ -1,0 +1,1102 @@
+paths:
+  /notes:
+    post:
+      tags:
+        - note
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: note.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/note'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/note'
+      deprecated: false
+    put:
+      tags:
+        - note
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: note.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/note'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/note'
+      deprecated: false
+    get:
+      tags:
+        - note
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: note.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/note'
+      deprecated: false
+  '/notes/{id}/exists':
+    get:
+      tags:
+        - note
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'note.exists__get_notes_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/notes/{id}':
+    head:
+      tags:
+        - note
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'note.exists__head_notes_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - note
+      summary: Find a model instance by id from the data source.
+      operationId: note.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/note'
+      deprecated: false
+    delete:
+      tags:
+        - note
+      summary: Delete a model instance by id from the data source.
+      operationId: note.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - note
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: note.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/note'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/note'
+      deprecated: false
+  /notes/findOne:
+    get:
+      tags:
+        - note
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: note.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/note'
+      deprecated: false
+  /notes/update:
+    post:
+      tags:
+        - note
+      summary: Update instances of the model matched by where from the data source.
+      operationId: note.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/note'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /notes/count:
+    get:
+      tags:
+        - note
+      summary: Count instances of the model matched by where from the data source.
+      operationId: note.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /notes/change-stream:
+    post:
+      tags:
+        - note
+      summary: Create a change stream.
+      operationId: note.createChangeStream__post_notes_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - note
+      summary: Create a change stream.
+      operationId: note.createChangeStream__get_notes_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+  /notes/greet:
+    get:
+      tags:
+        - note
+      operationId: note.greet
+      parameters:
+        - name: msg
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              greeting:
+                type: string
+      deprecated: false
+  '/teams/{id}/pokemons/{fk}':
+    get:
+      tags:
+        - team
+      summary: Find a related item by id for pokemons.
+      operationId: team.prototype.__findById__pokemons
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for pokemons
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pokemon'
+      deprecated: false
+    delete:
+      tags:
+        - team
+      summary: Delete a related item by id for pokemons.
+      operationId: team.prototype.__destroyById__pokemons
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for pokemons
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - team
+      summary: Update a related item by id for pokemons.
+      operationId: team.prototype.__updateById__pokemons
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for pokemons
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/pokemon'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pokemon'
+      deprecated: false
+  '/teams/{id}/pokemons':
+    get:
+      tags:
+        - team
+      summary: Queries pokemons of team.
+      operationId: team.prototype.__get__pokemons
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/pokemon'
+      deprecated: false
+    post:
+      tags:
+        - team
+      summary: Creates a new instance in pokemons of this model.
+      operationId: team.prototype.__create__pokemons
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/pokemon'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pokemon'
+      deprecated: false
+    delete:
+      tags:
+        - team
+      summary: Deletes all pokemons of this model.
+      operationId: team.prototype.__delete__pokemons
+      parameters:
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/teams/{id}/pokemons/count':
+    get:
+      tags:
+        - team
+      summary: Counts pokemons of team.
+      operationId: team.prototype.__count__pokemons
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /teams:
+    post:
+      tags:
+        - team
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: team.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/team'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/team'
+      deprecated: false
+    put:
+      tags:
+        - team
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: team.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/team'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/team'
+      deprecated: false
+    get:
+      tags:
+        - team
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: team.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/team'
+      deprecated: false
+  '/teams/{id}/exists':
+    get:
+      tags:
+        - team
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'team.exists__get_teams_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/teams/{id}':
+    head:
+      tags:
+        - team
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'team.exists__head_teams_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - team
+      summary: Find a model instance by id from the data source.
+      operationId: team.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/team'
+      deprecated: false
+    delete:
+      tags:
+        - team
+      summary: Delete a model instance by id from the data source.
+      operationId: team.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - team
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: team.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/team'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/team'
+      deprecated: false
+  /teams/findOne:
+    get:
+      tags:
+        - team
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: team.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/team'
+      deprecated: false
+  /teams/update:
+    post:
+      tags:
+        - team
+      summary: Update instances of the model matched by where from the data source.
+      operationId: team.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/team'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /teams/count:
+    get:
+      tags:
+        - team
+      summary: Count instances of the model matched by where from the data source.
+      operationId: team.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /teams/change-stream:
+    post:
+      tags:
+        - team
+      summary: Create a change stream.
+      operationId: team.createChangeStream__post_teams_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - team
+      summary: Create a change stream.
+      operationId: team.createChangeStream__get_teams_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+  /pokemons:
+    post:
+      tags:
+        - pokemon
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: pokemon.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/pokemon'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pokemon'
+      deprecated: false
+    put:
+      tags:
+        - pokemon
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: pokemon.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/pokemon'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pokemon'
+      deprecated: false
+    get:
+      tags:
+        - pokemon
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: pokemon.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/pokemon'
+      deprecated: false
+  '/pokemons/{id}/exists':
+    get:
+      tags:
+        - pokemon
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'pokemon.exists__get_pokemons_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/pokemons/{id}':
+    head:
+      tags:
+        - pokemon
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'pokemon.exists__head_pokemons_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - pokemon
+      summary: Find a model instance by id from the data source.
+      operationId: pokemon.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pokemon'
+      deprecated: false
+    delete:
+      tags:
+        - pokemon
+      summary: Delete a model instance by id from the data source.
+      operationId: pokemon.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - pokemon
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: pokemon.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/pokemon'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pokemon'
+      deprecated: false
+  /pokemons/findOne:
+    get:
+      tags:
+        - pokemon
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: pokemon.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/pokemon'
+      deprecated: false
+  /pokemons/update:
+    post:
+      tags:
+        - pokemon
+      summary: Update instances of the model matched by where from the data source.
+      operationId: pokemon.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/pokemon'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /pokemons/count:
+    get:
+      tags:
+        - pokemon
+      summary: Count instances of the model matched by where from the data source.
+      operationId: pokemon.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /pokemons/change-stream:
+    post:
+      tags:
+        - pokemon
+      summary: Create a change stream.
+      operationId: pokemon.createChangeStream__post_pokemons_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - pokemon
+      summary: Create a change stream.
+      operationId: pokemon.createChangeStream__get_pokemons_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+definitions:
+  note:
+    properties:
+      title:
+        type: string
+      content:
+        type: string
+      id:
+        type: number
+        format: double
+    required:
+      - title
+    additionalProperties: false
+  x-any:
+    properties: {}
+  pokemon:
+    properties:
+      name:
+        type: string
+      image:
+        type: string
+      fainted:
+        default: false
+        type: boolean
+      id:
+        type: number
+        format: double
+      team_id:
+        type: number
+        format: double
+    required:
+      - name
+      - fainted
+    additionalProperties: false
+  team:
+    properties:
+      name:
+        type: string
+      limit:
+        default: '3'
+        type: number
+        format: double
+      id:
+        type: number
+        format: double
+    required:
+      - name
+      - limit
+    additionalProperties: false
+swagger: '2.0'
+info:
+  x-ibm-name: pokemans
+  version: 1.0.0
+  title: pokemans
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+  clientSecretHeader:
+    in: header
+    name: X-IBM-Client-Secret
+    type: apiKey
+security:
+  - clientIdHeader: []
+    clientSecretHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  gateway: micro-gateway
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: 'http://localhost:4001'
+  assembly:
+    execute:
+      - invoke:
+          target-url: $(runtime-url)$(request.path)$(request.search)

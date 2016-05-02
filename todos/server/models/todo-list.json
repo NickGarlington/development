@@ -1,0 +1,25 @@
+{
+  "name": "todo_list",
+  "plural": "todo_lists",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "todo_items": {
+      "type": "hasMany",
+      "model": "todo_item",
+      "foreignKey": "todo_list_id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

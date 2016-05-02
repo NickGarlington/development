@@ -1,0 +1,1095 @@
+paths:
+  /notes:
+    post:
+      tags:
+        - note
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: note.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/note'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/note'
+      deprecated: false
+    put:
+      tags:
+        - note
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: note.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/note'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/note'
+      deprecated: false
+    get:
+      tags:
+        - note
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: note.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/note'
+      deprecated: false
+  '/notes/{id}/exists':
+    get:
+      tags:
+        - note
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'note.exists__get_notes_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/notes/{id}':
+    head:
+      tags:
+        - note
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'note.exists__head_notes_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - note
+      summary: Find a model instance by id from the data source.
+      operationId: note.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/note'
+      deprecated: false
+    delete:
+      tags:
+        - note
+      summary: Delete a model instance by id from the data source.
+      operationId: note.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - note
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: note.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/note'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/note'
+      deprecated: false
+  /notes/findOne:
+    get:
+      tags:
+        - note
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: note.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/note'
+      deprecated: false
+  /notes/update:
+    post:
+      tags:
+        - note
+      summary: Update instances of the model matched by where from the data source.
+      operationId: note.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/note'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /notes/count:
+    get:
+      tags:
+        - note
+      summary: Count instances of the model matched by where from the data source.
+      operationId: note.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /notes/change-stream:
+    post:
+      tags:
+        - note
+      summary: Create a change stream.
+      operationId: note.createChangeStream__post_notes_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - note
+      summary: Create a change stream.
+      operationId: note.createChangeStream__get_notes_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+  /notes/greet:
+    get:
+      tags:
+        - note
+      operationId: note.greet
+      parameters:
+        - name: msg
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              greeting:
+                type: string
+      deprecated: false
+  '/todo_lists/{id}/todo_items/{fk}':
+    get:
+      tags:
+        - todo_list
+      summary: Find a related item by id for todo_items.
+      operationId: todo_list.prototype.__findById__todo_items
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for todo_items
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_item'
+      deprecated: false
+    delete:
+      tags:
+        - todo_list
+      summary: Delete a related item by id for todo_items.
+      operationId: todo_list.prototype.__destroyById__todo_items
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for todo_items
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - todo_list
+      summary: Update a related item by id for todo_items.
+      operationId: todo_list.prototype.__updateById__todo_items
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for todo_items
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/todo_item'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_item'
+      deprecated: false
+  '/todo_lists/{id}/todo_items':
+    get:
+      tags:
+        - todo_list
+      summary: Queries todo_items of todo_list.
+      operationId: todo_list.prototype.__get__todo_items
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/todo_item'
+      deprecated: false
+    post:
+      tags:
+        - todo_list
+      summary: Creates a new instance in todo_items of this model.
+      operationId: todo_list.prototype.__create__todo_items
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/todo_item'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_item'
+      deprecated: false
+    delete:
+      tags:
+        - todo_list
+      summary: Deletes all todo_items of this model.
+      operationId: todo_list.prototype.__delete__todo_items
+      parameters:
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/todo_lists/{id}/todo_items/count':
+    get:
+      tags:
+        - todo_list
+      summary: Counts todo_items of todo_list.
+      operationId: todo_list.prototype.__count__todo_items
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /todo_lists:
+    post:
+      tags:
+        - todo_list
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: todo_list.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/todo_list'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_list'
+      deprecated: false
+    put:
+      tags:
+        - todo_list
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: todo_list.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/todo_list'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_list'
+      deprecated: false
+    get:
+      tags:
+        - todo_list
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: todo_list.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/todo_list'
+      deprecated: false
+  '/todo_lists/{id}/exists':
+    get:
+      tags:
+        - todo_list
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'todo_list.exists__get_todo_lists_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/todo_lists/{id}':
+    head:
+      tags:
+        - todo_list
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'todo_list.exists__head_todo_lists_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - todo_list
+      summary: Find a model instance by id from the data source.
+      operationId: todo_list.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_list'
+      deprecated: false
+    delete:
+      tags:
+        - todo_list
+      summary: Delete a model instance by id from the data source.
+      operationId: todo_list.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - todo_list
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: todo_list.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/todo_list'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_list'
+      deprecated: false
+  /todo_lists/findOne:
+    get:
+      tags:
+        - todo_list
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: todo_list.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_list'
+      deprecated: false
+  /todo_lists/update:
+    post:
+      tags:
+        - todo_list
+      summary: Update instances of the model matched by where from the data source.
+      operationId: todo_list.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/todo_list'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /todo_lists/count:
+    get:
+      tags:
+        - todo_list
+      summary: Count instances of the model matched by where from the data source.
+      operationId: todo_list.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /todo_lists/change-stream:
+    post:
+      tags:
+        - todo_list
+      summary: Create a change stream.
+      operationId: todo_list.createChangeStream__post_todo_lists_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - todo_list
+      summary: Create a change stream.
+      operationId: todo_list.createChangeStream__get_todo_lists_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+  /todo_items:
+    post:
+      tags:
+        - todo_item
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: todo_item.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/todo_item'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_item'
+      deprecated: false
+    put:
+      tags:
+        - todo_item
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: todo_item.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/todo_item'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_item'
+      deprecated: false
+    get:
+      tags:
+        - todo_item
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: todo_item.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/todo_item'
+      deprecated: false
+  '/todo_items/{id}/exists':
+    get:
+      tags:
+        - todo_item
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'todo_item.exists__get_todo_items_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/todo_items/{id}':
+    head:
+      tags:
+        - todo_item
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'todo_item.exists__head_todo_items_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - todo_item
+      summary: Find a model instance by id from the data source.
+      operationId: todo_item.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_item'
+      deprecated: false
+    delete:
+      tags:
+        - todo_item
+      summary: Delete a model instance by id from the data source.
+      operationId: todo_item.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - todo_item
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: todo_item.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/todo_item'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_item'
+      deprecated: false
+  /todo_items/findOne:
+    get:
+      tags:
+        - todo_item
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: todo_item.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todo_item'
+      deprecated: false
+  /todo_items/update:
+    post:
+      tags:
+        - todo_item
+      summary: Update instances of the model matched by where from the data source.
+      operationId: todo_item.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/todo_item'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /todo_items/count:
+    get:
+      tags:
+        - todo_item
+      summary: Count instances of the model matched by where from the data source.
+      operationId: todo_item.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            required: []
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /todo_items/change-stream:
+    post:
+      tags:
+        - todo_item
+      summary: Create a change stream.
+      operationId: todo_item.createChangeStream__post_todo_items_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - todo_item
+      summary: Create a change stream.
+      operationId: todo_item.createChangeStream__get_todo_items_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+definitions:
+  note:
+    properties:
+      title:
+        type: string
+      content:
+        type: string
+      id:
+        type: number
+        format: double
+    required:
+      - title
+    additionalProperties: false
+  x-any:
+    properties: {}
+  todo_item:
+    properties:
+      completed:
+        default: false
+        type: boolean
+      item:
+        type: string
+      id:
+        type: number
+        format: double
+      todo_list_id:
+        type: number
+        format: double
+    required:
+      - completed
+      - item
+    additionalProperties: false
+  todo_list:
+    properties:
+      name:
+        type: string
+      id:
+        type: number
+        format: double
+    required:
+      - name
+    additionalProperties: false
+swagger: '2.0'
+info:
+  x-ibm-name: todos
+  version: 1.0.0
+  title: todos
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+  clientSecretHeader:
+    in: header
+    name: X-IBM-Client-Secret
+    type: apiKey
+security:
+  - clientIdHeader: []
+    clientSecretHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  gateway: micro-gateway
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: 'http://localhost:4001'
+  assembly:
+    execute:
+      - invoke:
+          target-url: $(runtime-url)$(request.path)$(request.search)
